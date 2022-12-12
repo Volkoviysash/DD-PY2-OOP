@@ -130,7 +130,7 @@ class Gun:
     """
     def __init__(self, model: str, number_of_bullets: int):
         """
-       Создание и подготовка к работе объекта "студент"
+       Создание и подготовка к работе объекта "пистолет"
        :param model: Полное название модели пистолета
        :param number_of_bullets: Количество патронов в магазине
 
@@ -142,7 +142,7 @@ class Gun:
         self.model = model
 
         if not isinstance(number_of_bullets, int):
-            raise TypeError("Название модели должно быть типа str")
+            raise TypeError("Название модели должно быть типа int")
         self.number_of_bullets = number_of_bullets
 
         self.is_loaded = False  # изначально пистолет незаряжен

@@ -1,7 +1,3 @@
-from pydantic import BaseModel
-from typing import Optional
-
-
 BOOKS_DATABASE = [
     {
         "id": 1,
@@ -30,7 +26,12 @@ class Library(BaseModel):
     """
     Класс, описывающий модель библиотеки
     """
-    books: Optional[list] = []
+    def __init__(self, books: list = None):
+    if books is None:
+        books = []
+    else:
+        self.books = books
+        
 
     def get_next_book_id(self) -> int:
         """"

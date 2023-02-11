@@ -1,3 +1,5 @@
+import doctest
+
 class BasePhone:
     """Класс описывает базовую модель телефона"""
     def __init__(self, phone_number: str) -> None:
@@ -130,32 +132,7 @@ class HomePhone(BasePhone):
 
 
 if __name__ == '__main__':
-    print("Base phone ___________")
+    doctest.testmod()
     base_phone = BasePhone('+11111111')
-    print(base_phone)
-    print(repr(base_phone))
-    print(base_phone.call('+123'))
-    print(base_phone.ring('+234'))
-    print()
-
-    print("Mobile phone ___________")
     mobile_phone = MobilePhone(phone_number='+22222222', model="Iphone 13")
-    print(mobile_phone)
-    mobile_phone.change_number('23445')
-    print(repr(mobile_phone))
-    print(mobile_phone.call('+123'))
-    print(mobile_phone.ring())
-    print()
-
-    print("Home phone ___________")
     home_phone = HomePhone(phone_number='+22222222', region="Moskow")
-    print(home_phone)
-    print(repr(home_phone))
-    print(home_phone.call('+123'))
-    print(home_phone.ring())
-    print()
-
-    print("Dop ___________")
-    print(home_phone.region)
-    home_phone.region = "Moldova"
-    print(home_phone.region)

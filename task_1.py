@@ -1,7 +1,3 @@
-#TODO: базовый класс
-#TODO: дочерний класс
-#TODO: __init__, __str__, __repr__, 
-
 class BasePhone:
     """Класс описывает базовую модель телефона"""
     def __init__(self, phone_number: str) -> None:
@@ -41,7 +37,7 @@ class BasePhone:
         return True
 
     @property
-    def phone_number(self):
+    def phone_number(self) -> str:
         return self._phone_number
 
     def call(self, output_number: str) -> None:
@@ -57,7 +53,7 @@ class BasePhone:
             raise ValueError('Нельзя позвонить на этот номер!')
         return f'Вызывается абонент с номером {output_number}.'
 
-    def ring(self):
+    def ring(self) -> str:
         """
         Метод срабатывает, когда происходит входящий вызов
         """
@@ -82,23 +78,23 @@ class MobilePhone(BasePhone):
         return f'{self.__class__.__name__}(phone_number={self.phone_number!r}, phone_model={self.model!r})'
 
     @property
-    def model(self):
+    def model(self) -> str:
         """Модель устанавливается один раз и в дальнейшем не может быть изменена"""
         return self._model
 
     @property
-    def phone_number(self):
+    def phone_number(self) -> None:
         return self._phone_number
 
     @phone_number.setter
-    def phone_number(self, new_phone_number):
+    def phone_number(self, new_phone_number: str) -> str:
         """У мобильного телефона есть функция замены симкарты и соответственно изменение номера"""
         if BasePhone.is_phone_number_valid(new_phone_number):
             self._phone_number = new_phone_number
         else:
             raise AttributeError("Неверный формат номера телефона")   
 
-    def ring(self, input_number):
+    def ring(self, input_number: str) -> str:
         """Метод входящего вызова, так как мобильный телефон может определить номер, с которого звонят"""
         return f'Дзынь-дзынь! Вам звонят с номера {input_number}'
 

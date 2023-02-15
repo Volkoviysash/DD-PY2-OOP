@@ -23,11 +23,19 @@ class PaperBook(Book):
     """ Бумажная книга - дочерний класс книги. """
     def __init__(self, name: str, author: str, pages: int):
         super().__init__(name, author)
-        if not isinstance(pages, int):
+        self._pages = pages
+
+    @property
+    def pages(self):
+        return self._pages
+
+    @pages.setter
+    def pages(self, new_pages):
+        if not isinstance(new_pages, int):
             raise AttributeError("Number of pages should be an integer")
-        if pages <= 0:
+        if new_pages <= 0:
             raise AttributeError("Number of pages should be a positive number")
-        self.pages = pages
+        self._pages = new_pages
 
     def __str__(self):
         return f"Бумажная книга {self.name}. Автор {self.author}. Количество страниц {self.pages}"
@@ -40,11 +48,20 @@ class AudioBook(Book):
     """ Аудио книга - дочерний класс книги. """
     def __init__(self, name: str, author: str, duration: float):
         super().__init__(name, author)
-        if (not isinstance(duration, float)) and (not isinstance(duration, int)):
+        
+        self._duration = duration
+
+    @property
+    def duration(self):
+        return self._duration
+
+    @duration.setter
+    def duration(self, new_duration):
+        if (not isinstance(new_duration, float)) and (not isinstance(new_duration, int)):
             raise AttributeError("Duration should be float or integer")
-        if duration <= 0:
+        if new_duration <= 0:
             raise AttributeError("Duration should be a positive number")
-        self.duration = duration
+        self._duration = new_duration
 
     def __str__(self) -> str:
         return f"Аудио книга {self.name}. Автор {self.author}, Длительность {self.duration}"
@@ -68,4 +85,3 @@ if __name__ == "__main__":
     print(audio_book)
     print(repr(audio_book))
     print()
-    
